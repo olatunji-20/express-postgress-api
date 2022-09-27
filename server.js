@@ -3,6 +3,8 @@ const studentRoutes = require("./src/student/routes")
 
 
 const app = express();
+app.use(express.json());
+
 
 app.get("/", (req, res) => {
     console.log("home url accessed")
