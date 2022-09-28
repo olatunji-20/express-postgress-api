@@ -11,6 +11,8 @@ router.get("/:id", controller.getStudentById);
 
 router.delete("/:id", controller.removeStudent);
 
+router.patch("/:id", controller.updateStudent)
+
 
 
 module.exports = router;
