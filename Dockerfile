@@ -6,9 +6,9 @@ RUN mkdir /app && chown app:app /app
 
 USER app
 
-WORKDIR /app
+WORKDIR /home/app
 
-COPY ./package.json ./package-lock.json ./
+COPY ./package.json ./
 
 # COPY ./package-lock.json ./
 
@@ -18,4 +18,4 @@ COPY . .
 
 EXPOSE 3000
 
-RUN ["node", "server.js"]
+CMD ["node", "server.js"]
