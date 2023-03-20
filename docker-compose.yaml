@@ -2,6 +2,7 @@ version: "3.8"
 services:
   db:
     image: postgres:12
+    restart: always
     container_name: postgres-contain
 
     # volumes:- db-data:/var/lib/postgresql/data
@@ -13,10 +14,11 @@ services:
 
   backend:
     build:
-      context: ./api
-      dockerfile:
-    image: 
-    container_name:
+      context: ./
+      dockerfile: Dockerfile
+    image: ola-server
+    restart: always
+    container_name: compose_backend
 
     # volumes:- 
 
@@ -28,3 +30,5 @@ services:
       DB_PASSWORD: ola
 
     # networks:
+    ports:
+      - 3000:3000

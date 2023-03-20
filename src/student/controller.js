@@ -4,8 +4,8 @@ const queries = require("./queries")
 const getStudents = (req, res) => {
     pool.query(queries.getStudents, (error, results) => {
         if(error) {
-            res.send("error in query...");
-            console.log("error in query...");
+            res.send("error in getStudent query...");
+            console.log("error in getStudent query...");
         }else {
             res.status(200).json(results.rows);
             console.log(results.rows);
@@ -17,8 +17,8 @@ const getStudentById = (req, res) => {
     const id = parseInt(req.params.id);
     pool.query(queries.getStudentById, [id] ,(error, results) => {
         if(error){
-            console.log("error in query...");
-            res.send("error in query...");
+            console.log("error in getStudentById query...");
+            res.send("error in getStudentById query...");
         }else {
             res.status(200).json(results.rows);
             console.log(results.rows);
@@ -36,8 +36,8 @@ const addStudent = (req, res) => {
         else {
             pool.query(queries.addStudent, [name, email, phone, classs, social, dob], (error, results) => {
                 if(error) {
-                    res.send("error in query...");
-                    console.log("error in query...");
+                    res.send("error in addStudent query...");
+                    console.log("error in addStudent query...");
                 } else {
                     res.send("student created sucsessfully");
                     console.log("student created successfully");
@@ -78,7 +78,7 @@ const updateStudent = (req, res) => {
         } else {
             pool.query(queries.updateStudent, [ name, id ], (error, results) => {
                 if(error) {
-                    res.send("error in query...");
+                    res.send("error in updateStudent query...");
                     console.log(error)
                 }else {
                     res.send("student's info successfully updated...");
