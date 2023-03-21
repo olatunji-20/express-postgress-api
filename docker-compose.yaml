@@ -18,6 +18,8 @@ services:
       dockerfile: Dockerfile
     image: ola-server
     restart: always
+    depends_on:
+      - db
     container_name: compose_backend
 
     # volumes:- 
