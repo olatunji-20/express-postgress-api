@@ -4,12 +4,14 @@ services:
     image: postgres:12
     restart: always
     container_name: postgres-contain
-
-    # volumes:- db-data:/var/lib/postgresql/data
-
     environment:
       POSTGRES_DB: cfc
       POSTGRES_PASSWORD: ola
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
     # networks:- 
 
   backend:
@@ -17,20 +19,20 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: ola-server
-    restart: always
     depends_on:
       - db
+    restart: always
     container_name: compose_backend
+    ports:
+      - 3000:3000
 
     # volumes:- 
 
-    environment:
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_DATABASE: postgres
-      DB_PASSWORD: ola
+    # environment:
+    #   DB_HOST: localhost
+    #   DB_PORT: 5432
+    #   DB_USER: postgres
+    #   DB_DATABASE: postgres
+    #   DB_PASSWORD: ola
 
     # networks:
-    ports:
-      - 3000:3000
