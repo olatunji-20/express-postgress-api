@@ -6,6 +6,7 @@ const getStudents = (req, res) => {
         if(error) {
             res.send("error in getStudent query...");
             console.log("error in getStudent query...");
+            console.log(error)
         }else {
             res.status(200).json(results.rows);
             console.log(results.rows);
@@ -19,6 +20,7 @@ const getStudentById = (req, res) => {
         if(error){
             console.log("error in getStudentById query...");
             res.send("error in getStudentById query...");
+            console.log(error)
         }else {
             res.status(200).json(results.rows);
             console.log(results.rows);
@@ -32,6 +34,7 @@ const addStudent = (req, res) => {
         if(results.rows.length) {
             res.send("email already exits");
             console.log("email already exists");
+            console.log(error)
         } 
         else {
             pool.query(queries.addStudent, [name, email, phone, classs, social, dob], (error, results) => {
@@ -56,7 +59,8 @@ const removeStudent = (req, res) => {
     pool.query(queries.checkForStudent, [id], (error, results) => {
         if(!results.rows.length) {
             res.send("The student couldn't be deleted as he/she does not exist...");
-            console.log("The student couldn't be deleted as he/she does not exist...")
+            console.log("The student couldn't be deleted as he/she does not exist...");
+            console.log(error)
         }else {
             pool.query(queries.removeStudent, [id], (error, results) => {
                 if(error) throw error;
@@ -75,6 +79,7 @@ const updateStudent = (req, res) => {
         if(!results.rows.length) {
             res.send("student does not exist...");
             console.log("student does not exist...");
+            console.log(error)
         } else {
             pool.query(queries.updateStudent, [ name, id ], (error, results) => {
                 if(error) {

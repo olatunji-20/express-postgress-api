@@ -2,13 +2,15 @@ version: "3.8"
 services:
   db:
     image: postgres:12
-    restart: always
+    # restart: always
     container_name: postgres-contain
     environment:
       POSTGRES_DB: cfc
       POSTGRES_PASSWORD: ola
-    volumes:
-      - db-data:/var/lib/postgresql/data
+
+    # volumes:
+    #   - ./db-data:/var/lib/postgresql/data
+
     ports:
       - 5432:5432
 
@@ -21,7 +23,7 @@ services:
     image: ola-server
     depends_on:
       - db
-    restart: always
+    # restart: always
     container_name: compose_backend
     ports:
       - 3000:3000
