@@ -2,10 +2,10 @@ const Pool = require("pg").Pool;
 
 const pool = new Pool({
     user: "postgres",
-    host: "127.0.0.1",
+    host: "db",
     database: "cfc",
     password: "ola",
     port: 5432
 });
-
+// host changed to db(instead of localhost) because of docker services
 module.exports = pool;

@@ -6,7 +6,7 @@ const getStudents = (req, res) => {
         if(error) {
             res.send("error in getStudent query...");
             console.log("error in getStudent query...");
-            console.log(error)
+            console.log("ERRRORRR" + " " + error)
         }else {
             res.status(200).json(results.rows);
             console.log(results.rows);
